@@ -1,0 +1,142 @@
+<html>
+<head>
+  <style>
+    body {
+      background-image: linear-gradient(to right, #fff, #fff);
+      font-weight: bold;
+    }
+
+    .container {
+      width: 80%;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+
+    .left {
+      width: 50%;
+      text-align: center;
+    }
+
+    .right {
+      width: 50%;
+      text-align: center;
+    }
+
+    .logo {
+      width: 300px;
+      height: 100px;
+    }
+
+    .card {
+      width: 200px;
+      height: 300px;
+      margin: 10px;
+    }
+
+    .bubble {
+      position: absolute;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background-color: rgba(255,255,255,0.5);
+      box-shadow: 0 0 5px rgba(0,0,0,0.1);
+      animation: bubble 10s linear infinite;
+    }
+
+    .bubble:nth-child(1) {
+      left: 10%;
+      animation-delay: -2s;
+      background-color: #f00;
+    }
+
+    .bubble:nth-child(2) {
+      left: 20%;
+      animation-delay: -4s;
+      background-color: #ff0;
+    }
+
+    .bubble:nth-child(3) {
+      left: 30%;
+      animation-delay: -6s;
+      background-color: #0f0;
+    }
+
+    .bubble:nth-child(4) {
+      left: 40%;
+      animation-delay: -8s;
+      background-color: #0ff;
+    }
+
+    .bubble:nth-child(5) {
+      left: 50%;
+      animation-delay: -10s;
+      background-color: #00f;
+    }
+
+    @keyframes bubble {
+      0% {
+        bottom: -50px;
+        transform: scale(1);
+        opacity: 1;
+      }
+      50% {
+        transform: scale(1.2);
+        opacity: 0.8;
+      }
+      100% {
+        bottom: 100%;
+        transform: scale(1);
+        opacity: 0;
+      }
+    }
+    
+    .content {
+      display: none;
+    }
+
+    .content.active {
+      display: block;
+    }
+
+    h1, p, ol, li {
+      font-size: 24px;
+    }
+    
+  </style>
+</head>
+<body>
+   <div class="container">
+       <div id="content-1" class="content active">
+          <img src="1.jpg" alt="" width="1200" height="675">
+       </div>
+       <div id="content-2" class="content">
+        <img src="2.jpg" alt="" width="1200" height="675">
+       </div>
+       <div id="content-3" class="content">
+        <img src="3.jpg" alt="" width="1200" height="675">
+       </div>
+   </div>
+
+   <div class="bubble"></div>
+   <div class="bubble"></div>
+   <div class="bubble"></div>
+   <div class="bubble"></div>
+   <div class="bubble"></div>
+
+   <script>
+     let contents = document.getElementsByClassName("content");
+     let index = 0;
+
+     function showNextContent() {
+       contents[index].classList.remove("active");
+       index = (index + 1) % contents.length;
+       contents[index].classList.add("active");
+     }
+
+     setInterval(showNextContent, 7000);
+   </script>
+</body>
+</html>
